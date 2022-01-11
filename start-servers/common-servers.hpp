@@ -6,13 +6,14 @@
 class	CommonServers
 {
 	public:
-		CommonServers(const std::pair<int, int> &ID);
+		CommonServers(const std::pair<unsigned int, int> &ID);
 		void	AddServer(const UniqueServer &server);
 		bool	operator==(const UniqueServer &server);
-		bool	operator==(const std::pair<int, int> &id);
+		bool	operator==(const std::pair<unsigned int, int> &id);
+		std::pair<unsigned int, int> GetIpPortCommonServer() const;
 		void	Display() const;
 	private:
-		std::pair<int, int>	aCSID; // common server id (host, port)
+		std::pair<unsigned int, int>	aCSID; // common server id (host, port)
 		std::vector<UniqueServer> aServers;
 	private:
 		CommonServers() {}

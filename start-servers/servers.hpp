@@ -7,13 +7,12 @@
 class UniqueServer
 {
 	public:
-		UniqueServer(int host, int port);
+		UniqueServer(const std::pair<unsigned int, int> &);
 		bool	operator==(const UniqueServer &rhs);
-		std::pair<int, int>	GetHostAndPort() const;
+		std::pair<unsigned int, int>	GetHostAndPort() const;
 		void	Display() const;
 	private:
-		int	aHost;
-		int	aPort;
+		std::pair<unsigned int, int> aServerInfo;// ip , port in this order
 };
 
 #endif 

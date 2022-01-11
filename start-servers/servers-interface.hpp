@@ -11,7 +11,7 @@ class ServersInterface
 		void	AddServer(const UniqueServer &srv);
 		void	Display() const;
 		// operator [] i will give it host , port pair and will return refernce 
-		CommonServers	&operator[](const std::pair<int, int> &id);
+		CommonServers	&operator[](const std::pair<unsigned int, int> &id);
 		iterator	begin();
 		iterator	end();
 	private:

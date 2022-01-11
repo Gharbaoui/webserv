@@ -42,7 +42,7 @@ void	ServersInterface::Display() const
 	}
 }
 
-CommonServers	&ServersInterface::operator[](const std::pair<int, int> &id)
+CommonServers	&ServersInterface::operator[](const std::pair<unsigned int, int> &id)
 {
 	std::vector<CommonServers>::iterator first, last;
 

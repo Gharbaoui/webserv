@@ -1,6 +1,6 @@
 #include "common-servers.hpp"
 
-CommonServers::CommonServers(const std::pair<int, int> &ID)
+CommonServers::CommonServers(const std::pair<unsigned int, int> &ID)
 {
 	aCSID.first = ID.first;	 // host
 	aCSID.second = ID.second; // port
@@ -31,7 +31,12 @@ void	CommonServers::Display() const
 }
 
 
-bool	CommonServers::operator==(const std::pair<int, int> &id)
+bool	CommonServers::operator==(const std::pair<unsigned int, int> &id)
 {
 	return (aCSID == id);
+}
+
+std::pair<unsigned int, int> CommonServers::GetIpPortCommonServer() const
+{
+	return aCSID;
 }

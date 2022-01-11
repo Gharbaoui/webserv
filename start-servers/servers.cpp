@@ -1,24 +1,24 @@
 #include "servers.hpp"
 
-UniqueServer::UniqueServer(int host, int port) : aHost(host), aPort(port) {}
-bool	UniqueServer::operator==(const UniqueServer &rhs)
+UniqueServer::UniqueServer(const std::pair<unsigned int, int> &srv)
 {
-	if (aHost == rhs.aHost)
-	{
-		if (aPort == rhs.aPort)
-			return true;
-	}
-	return false;
+	aServerInfo = srv;
 }
 
 
-std::pair<int, int>	UniqueServer::GetHostAndPort() const
+bool	UniqueServer::operator==(const UniqueServer &rhs)
 {
-	return std::make_pair(aHost, aPort);
+	return (aServerInfo == rhs.aServerInfo);
+}
+
+
+std::pair<unsigned int, int>	UniqueServer::GetHostAndPort() const
+{
+	return aServerInfo;
 }
 
 
 void	 UniqueServer::Display() const
 {
-	std::cout << "Host :" << aHost << " Port: " << aPort << std::endl; 
+	std::cout << "Host :" << aServerInfo.first << " Port: " << aServerInfo.second << std::endl; 
 }
