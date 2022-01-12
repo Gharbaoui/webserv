@@ -7,10 +7,8 @@
 
 int main()
 {
+	std::map<int, int> FdToIndex; // i give you fd you give index in ServersInterface vector
 	
-	std::map<int, ServerSocketLink>	FdToHostInfo;
-	int k;
-	ServerSocketLink	tmp;
 	std::vector<UniqueServer> vec { 
 		UniqueServer(std::make_pair(0, 1000)),
 		UniqueServer(std::make_pair(0, 9000)),
@@ -24,28 +22,19 @@ int main()
 		UniqueServer(std::make_pair(0, 40000))
 	};
 
-	ServersInterface s(vec);
-
-
-	s.Display();
-	ServersInterface::iterator first, last;
+	ServersInterface s(vec); // we will be as refrence
+	ServersInterface::iterator	first, last;
 	first = s.begin();
 	last = s.end();
+	int index = 0;
 	
 	while (first != last)
 	{
-		tmp = StartServer(first->GetIpPortCommonServer(), k);
-		FdToHostInfo.insert(std::make_pair(k, tmp));
+		FdToIndex.insert(StartServer(first->GetIpPortCommonServer(), index));
+		++index;
 		++first;
 	}
 
-	std::map<int, ServerSocketLink>::iterator begin, end;
-	begin = FdToHostInfo.begin();
-	end = FdToHostInfo.end();
-	while (begin != end)
-	{
-		std::cout << "Fd: " <<  begin->second.aFd << " Ip: " << begin->second.aConnectedServerInfo.first << " Port: " << begin->second.aConnectedServerInfo.second << std::endl;
-		++begin;
-	}
+	s.Display();
 
 }
